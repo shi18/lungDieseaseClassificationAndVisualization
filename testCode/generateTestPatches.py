@@ -1,16 +1,3 @@
-# train = [61, 103, 16, 43, 17, 39, 68, 115, 26, 84, 72, 57, 64, 71, 116, 29, 111, 100, 109, 81, 34, 5, 38, 28, 79, 86,
-#          101, 75, 42, 4, 69, 49, 112, 106, 3, 99, 20, 45, 47, 56, 67, 18, 37, 87, 113, 90, 110, 80, 91, 73, 58, 27, 25,
-#          10, 50, 60, 119, 97, 11, 88, 40, 66, 51, 35, 96, 54, 13, 83, 12, 65, 1, 105, 92, 52, 102, 21, 93, 55, 6, 8]
-# test = []
-# for i in range(1, 121, 1):
-#     if i not in train:
-#         test.append(i)
-# print(test)
-# print(len(test))
-# test = [105, 116, 119, 123, 124, 129, 132, 134, 135, 142-2951, 143, 144,
-#         147, 152, 157, 160, 163, 165, 17, 177, 181, 182, 23, 36, 38, 39,
-#         41, 48, 53-7605, 57-5652, 70, 74, 78, 83, 90, 92, 205, 208, 209, 211]
-
 import matplotlib
 
 # matplotlib.use('Agg')
@@ -28,13 +15,8 @@ def rescale(inArr, a, b):
     M = inArr.max()
     numerator = (b - a) * (inArr - m)
     denominator = (M - m)
-    # if denominator != 0:
     out = (numerator / denominator) + a
     return out
-    # else:
-    #     inArr[inArr!=0]=0
-    #     return inArr
-
 
 def threeWindows(inArr):
     tmpArr = np.zeros(32 * 32 * 3).reshape(32, 32, 3)
@@ -140,7 +122,7 @@ def saveITK(image, filename):
     sitk.WriteImage(im, filename, True)
 
 def processOnePatient(patientID):
-    oriPath = '/Users/shiyan/Downloads/lung/data/testData/'+str(patientID)+'/'
+    oriPath = '**/lung/data/testData/'+str(patientID)+'/'
     maskPath = oriPath + 'lung_mask/'
     oriImg = get3DArry(oriPath).astype('int64')
     maskImg = get3DArry(maskPath)
@@ -167,11 +149,7 @@ def processOnePatient(patientID):
             extractPatchFromOri(leftUpCoorList, oriSlice, count, saveFolderPath='./testPatches/')
     return patientLUCList
 
-
-
 import glob, os, os.path
-
-
 
 def saveList(patientID):
     filelist = glob.glob(os.path.join('./testPatches', "*.png"))
