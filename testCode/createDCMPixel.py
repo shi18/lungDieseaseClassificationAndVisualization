@@ -109,28 +109,10 @@ def generate(patientID, step):
     maskCopy = denoise(lenOfPatientLUCList, patientLUCList, maskCopy3, maskCopy, step)
     maskCopy = denoise(lenOfPatientLUCList, patientLUCList, maskCopy3, maskCopy, step)
     maskCopy = denoise(lenOfPatientLUCList, patientLUCList, maskCopy3, maskCopy, step)
-
-    # for layer in range(lenOfPatientLUCList):
-    #     tmp = patientLUCList[layer]
-    #     tmpLength = len(tmp)
-    #     if tmpLength != 0:
-    #         for j in range(tmpLength):
-    #             r = tmp[j][0]
-    #             c = tmp[j][1]
-    #             tmpMask2 = maskCopy3[layer, :, :][r - floor(step / 2): r + ceil(step / 2),
-    #                        c - floor(step / 2): c + ceil(step / 2)]
-    #             maxVal, maskCopy = getMaxNeigh(maskCopy, layer, r, c, step)
-    #             maskCopy[layer, :, :][r - floor(step / 2): r + ceil(step / 2),
-    #             c - floor(step / 2): c + ceil(step / 2)] = maxVal
-
-
-
     print(count)
     split = oriPath.split('/')
     id = split[-2]
     dcmName = id + 'mask.nii'
-
     saveITK(maskCopy, dcmName)
-
 
 generate(patientID=36, step=5)
