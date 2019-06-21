@@ -26,7 +26,7 @@ def saveITK(image, filename):
 
 def generate (patientID):
 
-    oriPath = '/Users/shiyan/Downloads/lung/data/testData/'+str(patientID)+'/'
+    oriPath = '**/lung/data/testData/'+str(patientID)+'/'
     maskPath = oriPath + 'lung_mask/'
     maskImg = get3DArry(maskPath)
     maskCopy = copy.deepcopy(maskImg)
