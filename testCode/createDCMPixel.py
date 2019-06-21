@@ -74,7 +74,7 @@ def denoise(lenOfPatientLUCList, patientLUCList, maskCopy3, maskCopy, step):
                 c - floor(step / 2): c + ceil(step / 2)] = maxVal
     return maskCopy
 def generate(patientID, step):
-    oriPath = '/Users/shiyan/Downloads/lung/data/testData/' + str(patientID) + '/'
+    oriPath = '**/lung/data/testData/' + str(patientID) + '/'
     maskPath = oriPath + 'lung_mask/'
     maskImg = get3DArry(maskPath)
     maskCopy = copy.deepcopy(maskImg)
