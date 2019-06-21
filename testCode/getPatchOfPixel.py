@@ -11,12 +11,9 @@ def rescale(inArr, a, b):
     M = inArr.max()
     numerator = (b - a) * (inArr - m)
     denominator = (M - m)
-    # if denominator != 0:
     out = (numerator / denominator) + a
     return out
-    # else:
-    #     inArr[inArr!=0]=0
-    #     return inArr
+
 
 
 def threeWindows(inArr):
@@ -130,7 +127,7 @@ def saveITK(image, filename):
 
 
 def processOnePatient(patientID, threshold, step):
-    oriPath = '/Users/shiyan/Downloads/lung/data/testData/' + str(patientID) + '/'
+    oriPath = '**/lung/data/testData/' + str(patientID) + '/'
     maskPath = oriPath + 'lung_mask/'
     oriImg = get3DArry(oriPath).astype('int64')
     maskImg = get3DArry(maskPath)
